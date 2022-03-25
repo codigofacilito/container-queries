@@ -8,6 +8,7 @@ body,html{
   padding:0;
   margin:0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
 }
 a{
   text-decoration: none;
@@ -49,12 +50,17 @@ header > * {
   font-size: 1.5rem;
 }
 .card{
-  width: 1080px;
+  width: 100%;
+  max-width: 1080px;
   border-radius: 0.25rem;
   box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.1);
+  container: inline-size;
+}
+
+
+.card .card-content{
   display: flex;
   align-items: center;
-  contain: layout inline-size;
 }
 
 .card img{
@@ -64,6 +70,20 @@ header > * {
 .card-text-content{
   flex: 1;
   padding: 0.8rem 1.2rem;
+}
+
+@container (max-width: 450px) {
+  .card-content{
+    flex-direction: column;
+  }
+  .card-image{
+    width:100%;
+  }
+  .card-image img{
+    width: 100%;
+    height: auto;
+    max-height: none;
+  }
 }
 
 .main-btn{
@@ -77,15 +97,16 @@ header > * {
 }
 
 .container{
-  max-width: 1100px;
+  width: 100%;
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   gap:1.5rem;
 }
 
 .main-section{
   display: flex;
-  gap:1em;
+  gap:50px;
   justify-content: space-between;
   margin-top:1.5em;
   max-width: 90vw;
@@ -93,7 +114,7 @@ header > * {
 }
 
 .main-section aside{
-  max-width: 350px;
+  width: 350px;
 }
 .coming-soon-section{
   max-width: 90vw;
@@ -103,8 +124,50 @@ header > * {
 
 .row{
   display: flex;
+  container-type: inline-size;
+  container-name: comingsoon;
+  gap:1em;
+  flex-wrap: wrap;
 }
 
 .row .card{
   flex-shrink: 0;
+}
+
+@container comingsoon (min-width: 1200px){
+  .card{
+    width: 350px;
+    max-width: 100%;
+  }
+  .card .card-content{
+    
+    flex-direction:column;
+  }
+}
+
+@media (max-width: 1400px){
+  .main-section{
+    display: block;
+  }
+  .main-section aside{
+    width: 100%;
+  }
+}
+header{
+  container: inline-size;
+}
+@container (max-width: 400px){
+  .title{
+    font-size: 2rem;
+  }
+  .title--3{
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 350px){
+  
+  nav{
+    grid-template-columns: 1fr;
+  }
 }
