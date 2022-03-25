@@ -72,7 +72,7 @@ header > * {
   padding: 0.8rem 1.2rem;
 }
 
-@container (max-width: 450px) {
+@container (max-width: 550px) {
   .card-content{
     flex-direction: column;
   }
